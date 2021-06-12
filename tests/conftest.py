@@ -26,7 +26,9 @@ def fx_config_data() -> dict:
         'debug': False,
         'cross_origin': [],
         'database': {
-            'url': 'postgresql://localhost:5432/flask-template-test',
+            'url':
+                'postgresql://postgres:postgres@localhost:5432/'
+                'flask-template-test',
         }
     }
 
