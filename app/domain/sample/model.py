@@ -4,7 +4,7 @@ from sqlalchemy import Column, String
 
 from sqlalchemy_utils import UUIDType
 
-from app.infra.orm import Base
+from app.orm import Base
 
 
 class Sample(Base):

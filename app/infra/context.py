@@ -5,7 +5,7 @@ from flask import current_app, has_request_context, request
 from werkzeug.local import LocalProxy
 from werkzeug.wrappers import BaseRequest
 
-from app.infra.orm import Session, create_session
+from app.orm import Session, create_session
 
 
 def current_context() -> Optional[BaseRequest]:
