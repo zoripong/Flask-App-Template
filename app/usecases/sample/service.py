@@ -2,8 +2,8 @@ import abc
 import typing as t
 import uuid
 
-from app.domain import Sample
-from app.infra.context import session
+from app.context import session
+from app.domain.sample.model import Sample
 from app.usecases.exception import EntityNotFound
 
 

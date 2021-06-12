@@ -1,8 +1,8 @@
 import typing as t
 import uuid
 
+from app.context import session
 from app.domain.sample.model import Sample
-from app.infra.context import session
 from app.usecases.sample.service import SampleRepository
 
 
