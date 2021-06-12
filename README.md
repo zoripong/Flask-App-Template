@@ -1,4 +1,7 @@
 # Flask Service Template
+![test status](https://github.com/zoripong/flask-service-template/actions/workflows/test.yaml/badge.svg)
+[![Python 3.8](https://img.shields.io/badge/python-3.8-yellow.svg)](https://www.python.org/downloads/release/python-380/)
+
 
 This is service template with flask.
 It is based on Layer Architecture.
