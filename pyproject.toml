@@ -13,6 +13,7 @@ alembic = "^1.6.5"
 sqlalchemy-utils = "^0.37.6"
 psycopg2 = "^2.8.6"
 dependency_injector = "^4.32.3"
+ormeasy = "^0.3.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.4"

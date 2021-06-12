@@ -201,6 +201,22 @@ python-versions = "*"
 version = "0.6.1"
 
 [[package]]
+category = "main"
+description = "ORM configuration easily."
+name = "ormeasy"
+optional = false
+python-versions = "*"
+version = "0.3.2"
+
+[package.dependencies]
+alembic = "*"
+sqlalchemy = "*"
+
+[package.extras]
+docs = ["sphinx"]
+tests = ["pytest", "import-order", "flake8"]
+
+[[package]]
 category = "dev"
 description = "Core utilities for Python packages"
 name = "packaging"
@@ -390,7 +406,7 @@ version = "2.0.1"
 watchdog = ["watchdog"]
 
 [metadata]
-content-hash = "04de4cea3e5de55040dc09f0335e72a0e3fe82af411a394c0ba1dc59fbea400f"
+content-hash = "d643e0ee6708cfa839bc373c32250db75edd735a86ff609af3a1e7d71dcb0ca6"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -600,6 +616,10 @@ markupsafe = [
 mccabe = [
     {file = "mccabe-0.6.1-py2.py3-none-any.whl", hash = "sha256:ab8a6258860da4b6677da4bd2fe5dc2c659cff31b3ee4f7f5d64e79735b80d42"},
     {file = "mccabe-0.6.1.tar.gz", hash = "sha256:dd8d182285a0fe56bace7f45b5e7d1a6ebcbf524e8f3bd87eb0f125271b8831f"},
+]
+ormeasy = [
+    {file = "ormeasy-0.3.2-py3-none-any.whl", hash = "sha256:0877f5c5a5cd648c61338ab4f0ba231b1def4f8f98a657454dacfa4128356f0c"},
+    {file = "ormeasy-0.3.2.tar.gz", hash = "sha256:d404887a390b2eef70f12b05df3704d020c245b9d44a7e085c6e92416544353e"},
 ]
 packaging = [
     {file = "packaging-20.9-py2.py3-none-any.whl", hash = "sha256:67714da7f7bc052e064859c05c595155bd1ee9f69f76557e21f051443c20947a"},
