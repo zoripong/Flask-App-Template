@@ -2,7 +2,7 @@ import argparse
 import os
 import pathlib
 
-from app.infra.wsgi import create_wsgi_app
+from app.infra.wsgi import create_wsgi_app, load_configuration
 
 parser = argparse.ArgumentParser(
     formatter_class=argparse.ArgumentDefaultsHelpFormatter
@@ -21,7 +21,7 @@ def main():
     args = parser.parse_args()
     if not args.config.is_file():
         parser.error(f'file not found: {args.config}')
-    wsgi_app = create_wsgi_app(args.config)
+    wsgi_app = create_wsgi_app(load_configuration(args.config))
     wsgi_app.run(host=args.host, port=args.port, debug=args.debug)
 
 

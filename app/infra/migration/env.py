@@ -7,17 +7,14 @@ from alembic import context
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
-from werkzeug.utils import find_modules, import_string
-
 sys.path.insert(0, os.getcwd())
-from app.infra.orm import Base  # noqa -- 현재 경로 찾을 수 있도록 실행 후 Import
+from app.orm import Base, import_all_modules  # noqa -- 현재 경로 찾을 수 있도록 실행 후 Import
 
 config = context.config
 fileConfig(config.config_file_name)
 
 # for 'autogenerate' configuration
 target_metadata = Base.metadata
-ENTITY_ROOT_PATH = 'app.domain'
 
 
 def run_migrations_offline():
@@ -61,13 +58,7 @@ def run_migrations_online():
             context.run_migrations()
 
 
-def import_all_module():
-    for name in find_modules(ENTITY_ROOT_PATH, include_packages=True):
-        import_string(name)
-
-
-import_all_module()  # --autogenerate 를 위해 모든 모듈을 import 합니다.
-
+import_all_modules()  # --autogenerate 를 위해 모든 모듈을 import 합니다.
 
 if context.is_offline_mode():
     run_migrations_offline()

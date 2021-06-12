@@ -22,14 +22,13 @@ def load_configuration(path: pathlib.Path) -> dict:
     return config
 
 
-def create_wsgi_app(config_path: pathlib.Path) -> Flask:
+def create_wsgi_app(config: dict) -> Flask:
     app = Flask(__name__)
 
     # set di configuration
     app.container = load_dependency_injection_configuration()
 
     # set configuration
-    config = load_configuration(config_path)
     app.config.update(config)
     app.config['APP_CONFIG'] = config
 
