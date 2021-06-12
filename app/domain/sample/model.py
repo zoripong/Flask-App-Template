@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import Column
+from sqlalchemy import Column, String
 
 from sqlalchemy_utils import UUIDType
 
@@ -15,5 +15,7 @@ class Sample(Base):
         default=uuid.uuid4,
         comment='ID'
     )
+
+    name = Column(String, nullable=False, comment='이름')
 
     __tablename__ = 'sample'
