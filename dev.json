@@ -1,0 +1,7 @@
+{
+  "debug": true,
+  "cross_origin": ["http://localhost:5959"],
+  "database": {
+    "url": "postgresql://localhost:5432/flask-template"
+  }
+}
