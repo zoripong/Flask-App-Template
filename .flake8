@@ -1,0 +1,8 @@
+[flake8]
+application_import_names = app
+exclude =
+    .git,
+    __pycache__,
+    build,
+    dist,
+    .venv
