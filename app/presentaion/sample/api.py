@@ -2,7 +2,7 @@ import uuid
 
 from dependency_injector.wiring import Provide, inject
 
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 
 from app.dependency import Container
 from app.presentaion.exception import BadRequest, NotFound
@@ -86,6 +86,49 @@ def get_sample(
         sample = sample_service.get_sample(sample_id=parsed_sample_id)
     except EntityNotFound:
         raise NotFound(f'Cannot found sample with {sample_id}')
+    return jsonify({
+        'sample': {
+            'id': sample.id,
+            'name': sample.name,
+        },
+    })
+
+
+@api.route('/', methods=['POST'])
+@inject
+def create_sample(
+    sample_service: SampleService = Provide[Container.sample_service],
+):
+    """Create Sample
+
+    .. code-block:: http
+
+       POST /samples/ HTTP/1.1
+
+       {
+            "name": "name"
+       }
+
+    .. code-block:: http
+
+       HTTP/1.1 200 OK
+       Content-Type: application/json
+
+       {
+           "sample": {
+                "id": "00000000-0000-0000-0000-000000000000",
+                "name": "name"
+            }
+       }
+
+    """
+    body = request.json if request.data else {}
+    name = body.get('name')
+
+    if not name:
+        raise BadRequest('name is required.')
+
+    sample = sample_service.create_sample(name=name)
     return jsonify({
         'sample': {
             'id': sample.id,

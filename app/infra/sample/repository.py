@@ -12,3 +12,6 @@ class SQLAlchemySampleRepository(SampleRepository):
 
     def find_sample(self, sample_id: uuid.UUID) -> t.Optional[Sample]:
         return session.query(Sample).get(sample_id)
+
+    def add_sample(self, sample: Sample):
+        session.add(sample)
