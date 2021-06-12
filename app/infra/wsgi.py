@@ -5,6 +5,8 @@ from flask import Flask
 
 from flask_cors import CORS
 
+from app.presentaion.sample.api import api as sample_api
+
 
 def load_configuration(path: pathlib.Path) -> dict:
     with open(path) as f:
@@ -22,5 +24,8 @@ def create_wsgi_app(config_path: pathlib.Path) -> Flask:
 
     # set cors
     CORS(app, origins=config.get('cross_origin'))
+
+    # set blueprint
+    app.register_blueprint(sample_api)
 
     return app
