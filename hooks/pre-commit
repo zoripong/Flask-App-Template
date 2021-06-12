@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+
+cwd="$(cd "$(dirname "$1")"; pwd -P)/$(basename "$1")"
+"$cwd"scripts/lint.sh
