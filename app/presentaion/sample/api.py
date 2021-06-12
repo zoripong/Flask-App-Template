@@ -1,12 +1,18 @@
-import uuid
+from dependency_injector.wiring import Provide, inject
 
 from flask import Blueprint, jsonify
+
+from app.dependency import Container
+from app.usecases.sample.service import SampleService
 
 api = Blueprint('sample', __name__, url_prefix='/samples')
 
 
 @api.route('/', methods=['GET'])
-def get_samples():
+@inject
+def get_samples(
+    sample_service: SampleService = Provide[Container.sample_service],
+):
     """List of Sample
 
     .. code-block:: http
@@ -36,8 +42,8 @@ def get_samples():
     return jsonify({
         'samples': [
             {
-                'id': uuid.uuid4(),
-                'name': 'name',
-            }
+                'id': service.id,
+                'name': service.name,
+            } for service in sample_service.get_samples()
         ],
     })
